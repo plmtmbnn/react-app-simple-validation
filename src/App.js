@@ -2,14 +2,14 @@ import { React, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 function App() {
-  const [registrationForm, setregistrationForm] = useState({
+  const [registrationForm, setRegistrationForm] = useState({
     full_name: "",
     email: "",
     age: 0,
   });
 
   const handleChange = (targetState, value) => {
-    setregistrationForm({
+    setRegistrationForm({
       ...registrationForm,
       [targetState]: value,
     });
@@ -54,7 +54,7 @@ function App() {
           <Form.Control
             type="number"
             placeholder="Umur"
-            value={registrationForm.c}
+            value={registrationForm.age}
             onChange={(event) => {
               handleChange("age", event.target.value);
             }}
