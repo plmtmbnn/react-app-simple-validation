@@ -1,27 +1,70 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 function App() {
+  const [registrationForm, setregistrationForm] = useState({
+    full_name: "",
+    email: "",
+    age: 0,
+  });
+
+  const handleChange = (targetState, value) => {
+    setregistrationForm({
+      ...registrationForm,
+      [targetState]: value,
+    });
+  };
+
   return (
     <Container style={{ display: "block", width: 700, padding: 30 }}>
-      <h4 className="text-center">React-Bootstrap Form Component</h4>
-      <Form>
+      <h4 className="text-center">Form Registration</h4>
+      <Form
+        onSubmit={(event) => {
+          alert("SUKSES DIKIRIM");
+          event.preventDefault();
+          event.stopPropagation();
+        }}
+      >
         <Form.Group>
-          <Form.Label>full name:</Form.Label>
-          <Form.Control type="text" placeholder="full name" />
+          <Form.Label>Nama Lengkap:</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Nama Lengkap"
+            value={registrationForm.full_name}
+            onChange={(event) => {
+              handleChange("full_name", event.target.value);
+            }}
+          />
+          <Form.Control.Feedback>Fullname harus diisi</Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label>email address:</Form.Label>
-          <Form.Control type="email" placeholder="your email address" />
+          <Form.Label>Alamat Email:</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Alamat Email"
+            value={registrationForm.email}
+            onChange={(event) => {
+              handleChange("email", event.target.value);
+            }}
+          />
+          <Form.Control.Feedback>Fullname harus diisi</Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-          <Form.Label>age:</Form.Label>
-          <Form.Control type="number" placeholder="age" />
+          <Form.Label>Umur:</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Umur"
+            value={registrationForm.c}
+            onChange={(event) => {
+              handleChange("age", event.target.value);
+            }}
+          />
+          <Form.Control.Feedback>Fullname harus diisi</Form.Control.Feedback>
         </Form.Group>
         <br />
         <div className="text-center">
-          <Button variant="primary" type="submit">
-            Click here to submit form
+          <Button variant="success" type="sumbit">
+            Daftar
           </Button>
         </div>
       </Form>
