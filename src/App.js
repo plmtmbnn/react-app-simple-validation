@@ -15,12 +15,16 @@ function App() {
     });
   };
 
+  const registraterNewAccount = () => {
+    alert("Berhasil mendaftarkan akun baru");
+  };
+
   return (
     <Container style={{ display: "block", width: 700, padding: 30 }}>
       <h4 className="text-center">Form Registration</h4>
       <Form
         onSubmit={(event) => {
-          alert("SUKSES DIKIRIM");
+          registraterNewAccount();
           event.preventDefault();
           event.stopPropagation();
         }}
